@@ -1,7 +1,8 @@
 import type { NextPage } from "next"
+import { Label } from "../components/Label"
 
 const Home: NextPage = () => {
-  return <h1>Hello, World!!</h1>
+  return <Label text="Hello, World!" />
 }
 
 // page componentはdefaultでexportする

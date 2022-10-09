@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { Label } from "../components/Label"
+import { Label } from "@/components/Label"
 
 const Home: NextPage = () => {
   return <Label text="Hello, World!" />

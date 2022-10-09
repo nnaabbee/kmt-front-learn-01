@@ -1,6 +1,10 @@
 import Document, { DocumentContext, DocumentInitialProps } from "next/document"
+import { Html, Head, Main, NextScript } from "next/document"
 import { ServerStyleSheet } from "styled-components"
 
+/**
+ * Styled-Componentを使用するためにClassベースで記載している
+ */
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet()
@@ -25,5 +29,19 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal()
     }
+  }
+
+  render(): JSX.Element {
+    return (
+      <Html>
+        <Head>
+          <meta charSet="UTF-8" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
 }

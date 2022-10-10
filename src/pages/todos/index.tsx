@@ -1,6 +1,7 @@
+import { InputWithLabel } from "@/components/InputWithLabel"
 import { table } from "console"
 import type { NextPage } from "next"
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import styled from "styled-components"
 
 type TodoStatus = "NEW" | "PROCESSING" | "DONE"
@@ -40,14 +41,8 @@ const Todo: NextPage = () => {
   return (
     <React.Fragment>
       <h1>Your Todo</h1>
-      <InputWithLabelWrapper>
-        <p>タイトル</p>
-        <input type="text" defaultValue={title} onChange={(event) => setTitle(event.target.value)} />
-      </InputWithLabelWrapper>
-      <InputWithLabelWrapper>
-        <p>テキスト</p>
-        <input type="text" defaultValue={text} onChange={(event) => setText(event.target.value)} />
-      </InputWithLabelWrapper>
+      <InputWithLabel label="タイトル" value={title} onChangeHandler={setTitle} />
+      <InputWithLabel label="テキスト" value={text} onChangeHandler={setText} />
       <button onClick={() => alert(`title:${title}\ntext:${text}`)}>Todo作成</button>
       <ul>
         {/* map関数を使用する */}
@@ -65,7 +60,3 @@ const Todo: NextPage = () => {
 export default Todo
 
 // ===style
-const InputWithLabelWrapper = styled.div`
-  display: flex;
-  column-gap: 10px;
-`

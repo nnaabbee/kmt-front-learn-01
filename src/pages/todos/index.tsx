@@ -1,5 +1,7 @@
+import { table } from "console"
 import type { NextPage } from "next"
-import React from "react"
+import React, { useState } from "react"
+import styled from "styled-components"
 
 type TodoStatus = "NEW" | "PROCESSING" | "DONE"
 
@@ -31,13 +33,26 @@ const Todo: NextPage = () => {
   //   }
   //   return todoElements
   // }
+
+  const [title, setTitle] = useState("今日の必須タスク")
+  const [text, setText] = useState("散歩する")
+
   return (
     <React.Fragment>
       <h1>Your Todo</h1>
+      <InputWithLabelWrapper>
+        <p>タイトル</p>
+        <input type="text" defaultValue={title} onChange={(event) => setTitle(event.target.value)} />
+      </InputWithLabelWrapper>
+      <InputWithLabelWrapper>
+        <p>テキスト</p>
+        <input type="text" defaultValue={text} onChange={(event) => setText(event.target.value)} />
+      </InputWithLabelWrapper>
+      <button onClick={() => alert(`title:${title}\ntext:${text}`)}>Todo作成</button>
       <ul>
         {/* map関数を使用する */}
         {sampleTodos.map((todo) => (
-          <li key={todo.id} style={{ listStyle: "none" }}>
+          <li key={todo.id}>
             {todo.id} - {todo.title} - {todo.text} - {todo.status}
           </li>
         ))}
@@ -48,3 +63,9 @@ const Todo: NextPage = () => {
 
 // page componentはdefaultでexportする
 export default Todo
+
+// ===style
+const InputWithLabelWrapper = styled.div`
+  display: flex;
+  column-gap: 10px;
+`

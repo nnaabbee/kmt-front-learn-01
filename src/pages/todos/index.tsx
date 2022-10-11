@@ -1,6 +1,7 @@
 import { InputWithLabel } from "@/components/InputWithLabel"
 import { table } from "console"
 import type { NextPage } from "next"
+import Image from "next/image"
 import React, { useCallback, useState } from "react"
 import styled from "styled-components"
 
@@ -47,9 +48,16 @@ const Todo: NextPage = () => {
       <ul>
         {/* map関数を使用する */}
         {sampleTodos.map((todo) => (
-          <li key={todo.id}>
-            {todo.id} - {todo.title} - {todo.text} - {todo.status}
-          </li>
+          <TodoRow key={todo.id}>
+            <p>{todo.id}</p>
+            <p>{todo.title}</p>
+            <p>{todo.text}</p>
+            <p>{todo.status}</p>
+            <ImageWrapper onClick={() => alert(`削除 ID:【${todo.id}】`)}>
+              {/* srcは/から始める、altとwidthとheightは必須 */}
+              <Image src="/icon_minus_white.svg" alt="delete" width="24px" height="24px" />
+            </ImageWrapper>
+          </TodoRow>
         ))}
       </ul>
     </React.Fragment>
@@ -60,3 +68,15 @@ const Todo: NextPage = () => {
 export default Todo
 
 // ===style
+const TodoRow = styled.li`
+  align-items: center;
+  column-gap: 10px;
+  display: flex;
+`
+
+const ImageWrapper = styled.div`
+  cursor: pointer;
+  :hover {
+    opacity: 0.75;
+  }
+`

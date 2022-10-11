@@ -17,6 +17,6 @@ export const InputWithLabel: FC<Props> = (props) => {
 }
 
 const InputWithLabelWrapper = styled.div`
-  display: flex;
   column-gap: 10px;
+  display: flex;
 `

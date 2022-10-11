@@ -1,4 +1,5 @@
 import { InputWithLabel } from "@/components/InputWithLabel"
+import { LabelWithChildren } from "@/components/LabelWithChildren"
 import { table } from "console"
 import type { NextPage } from "next"
 import Image from "next/image"
@@ -41,7 +42,7 @@ const Todo: NextPage = () => {
 
   return (
     <React.Fragment>
-      <h1>Your Todo</h1>
+      <LabelWithChildren>Your Todo</LabelWithChildren>
       <InputWithLabel label="タイトル" value={title} onChangeHandler={setTitle} />
       <InputWithLabel label="テキスト" value={text} onChangeHandler={setText} />
       <button onClick={() => alert(`title:${title}\ntext:${text}`)}>Todo作成</button>
